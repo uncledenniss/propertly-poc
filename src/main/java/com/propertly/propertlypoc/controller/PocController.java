@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class PocController {
 
-    @GetMapping("/")
+    @GetMapping("/test")
     public String welcome(){
         return "Hurray! We are all set for Propertly!";
     }

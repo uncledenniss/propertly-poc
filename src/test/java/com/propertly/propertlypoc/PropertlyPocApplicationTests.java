@@ -16,7 +16,7 @@ class PropertlyPocApplicationTests {
 
 	@Test
 	public void getHello() throws Exception {
-		ResponseEntity<String> response = template.getForEntity("/", String.class);
+		ResponseEntity<String> response = template.getForEntity("/test", String.class);
 		assertThat(response.getBody()).isEqualTo("Hurray! We are all set for Propertly!");
 	}
 
