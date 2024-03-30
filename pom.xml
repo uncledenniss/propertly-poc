@@ -55,6 +55,19 @@
 		</dependency>
 	</dependencies>
 
+	<repositories>
+		<repository>
+			<id>MavenDemo</id>
+			<url>https://pkgs.dev.azure.com/DabzTech/Mylab-Project/_packaging/propertly-poc/maven/v1</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -72,4 +85,11 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>MavenDemo</id>
+			<url>https://pkgs.dev.azure.com/DabzTech/Mylab-Project/_packaging/propertly-poc/maven/v1</url>
+		</repository>
+	</distributionManagement>
+	
 </project>
