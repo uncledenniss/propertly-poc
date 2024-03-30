@@ -88,7 +88,7 @@
 			    <artifactId>maven-surefire-plugin</artifactId>
 			    <version>3.0.0-M7</version> 
 			    <configuration>
-<!-- 				<release>17</release> -->
+				<release>17</release> 
 			        <testFailureIgnore>true</testFailureIgnore> 
 			        <includes>
 			            <include>**/*Test.java</include> 
