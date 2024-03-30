@@ -57,7 +57,7 @@
 
 	<repositories>
 		<repository>
-			<id>MavenDemo</id>
+			<id>Mylab-Project</id>
 			<url>https://pkgs.dev.azure.com/DabzTech/Mylab-Project/_packaging/propertly-poc/maven/v1</url>
 			<releases>
 				<enabled>true</enabled>
@@ -86,7 +86,7 @@
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-surefire-plugin</artifactId>
-			    <version>3.11.0</version> 
+			    <version>3.0.0-M7</version> 
 			    <configuration>
 				<release>17</release>
 			        <testFailureIgnore>true</testFailureIgnore> 
@@ -108,7 +108,7 @@
 
 	<distributionManagement>
 		<repository>
-			<id>MavenDemo</id>
+			<id>Mylab-Project</id>
 			<url>https://pkgs.dev.azure.com/DabzTech/Mylab-Project/_packaging/propertly-poc/maven/v1</url>
 		</repository>
 	</distributionManagement>
