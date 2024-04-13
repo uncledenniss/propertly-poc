@@ -35,7 +35,7 @@ steps:
 - script: mvn dependency:tree | grep 'maven-compiler-plugin'  # Filter output for compiler plugin
   workingDirectory: '$(System.DefaultWorkingDirectory)'
 
-- task: Docker@2
+- task: Docker@2.176.0
   inputs:
     containerRegistry: 'lab007'
     repository: 'czarhubmylabazuredevops'
