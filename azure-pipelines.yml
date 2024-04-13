@@ -12,6 +12,8 @@ pool:
 steps:
 # - script: mvn clean install -DskipTests=true
 #   workingDirectory: '$(System.DefaultWorkingDirectory)'
+- script: mvn dependency:purge-local-repository
+
 
 # - task: JavaToolInstaller@0
 #   inputs:
