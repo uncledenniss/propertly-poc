@@ -40,7 +40,7 @@ steps:
     containerRegistry: 'lab007'
     repository: 'czarhubmylabazuredevops'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
     buildContext: '$(Build.SourcesDirectory)/Dockerfile'
 - task: CopyFiles@2
   inputs:
