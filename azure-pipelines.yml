@@ -35,13 +35,13 @@ steps:
 - script: mvn dependency:tree | grep 'maven-compiler-plugin'  # Filter output for compiler plugin
   workingDirectory: '$(System.DefaultWorkingDirectory)'
 
-- task: Docker@2.176.0
+- task: Docker@2
   inputs:
     containerRegistry: 'lab007'
     repository: 'czarhubmylabazuredevops'
     command: 'buildAndPush'
-    Dockerfile: Dockerfile
-    buildContext: '$(Build.SourcesDirectory)/Dockerfile'
+    Dockerfile: '**/Dockerfile'
+    buildContext: '**'
 - task: CopyFiles@2
   inputs:
     Contents: '**'
