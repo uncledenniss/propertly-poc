@@ -28,6 +28,7 @@ steps:
     publishJUnitResults: false
     # testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean install package -X'
+    mavenVersionOption: '3.13.0'
 
 - script: mvn dependency:tree | grep 'maven-compiler-plugin'  # Filter output for compiler plugin
   workingDirectory: '$(System.DefaultWorkingDirectory)'
