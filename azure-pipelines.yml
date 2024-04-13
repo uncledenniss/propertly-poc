@@ -9,9 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: mvn clean install -DskipTests=true
-  workingDirectory: '$(System.DefaultWorkingDirectory)'
+# steps:
+# - script: mvn clean install -DskipTests=true
+#   workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 # - task: JavaToolInstaller@0
 #   inputs:
@@ -35,7 +35,7 @@ steps:
 - script: |  # Check Maven Logs for plugin version
     cat $(System.DefaultWorkingDirectory)/build.log | grep 'maven-compiler-plugin'
   workingDirectory: '$(System.DefaultWorkingDirectory)'
-      
+
 - task: Docker@2
   inputs:
     containerRegistry: 'lab007'
