@@ -35,10 +35,6 @@ steps:
 - script: mvn dependency:tree | grep 'maven-compiler-plugin'  # Filter output for compiler plugin
   workingDirectory: '$(System.DefaultWorkingDirectory)'
 
-- script: |  # Check Maven Logs for plugin version
-    cat $(System.DefaultWorkingDirectory)/build.log | grep 'maven-compiler-plugin'
-  workingDirectory: '$(System.DefaultWorkingDirectory)'
-
 - task: Docker@2
   inputs:
     containerRegistry: 'lab007'
