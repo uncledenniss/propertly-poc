@@ -1,0 +1,53 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+# - script: mvn clean install -DskipTests=true
+#   workingDirectory: '$(System.DefaultWorkingDirectory)'
+- script: mvn dependency:purge-local-repository
+
+
+# - task: JavaToolInstaller@0
+#   inputs:
+#     versionSpec: '17'
+#     jdkArchitectureOption: 'x64'
+#     jdkSourceOption: 'PreInstalled'
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '17'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    # testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'clean install package -X'
+    mavenVersionOption: '3.13.0'
+
+- script: mvn dependency:tree | grep 'maven-compiler-plugin'  # Filter output for compiler plugin
+  workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'lab007'
+    repository: 'czarhubmylabazuredevops'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    buildContext: '**'
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
